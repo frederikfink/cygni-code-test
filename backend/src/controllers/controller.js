@@ -1,16 +1,15 @@
-import fetch from '../utils/fetchWithTimeout.js'
+// import fetch from '../utils/fetchWithTimeout.js'
+import fetch from 'node-fetch';
 
-async function get(req, res, next) {
-  try {
-    let res = await fetch(
-      "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=28a501d82528fc0b2ef18b3429d4f916&text=starwars&format=json",
-      {}, 400
-      );
-    return res;
-  } catch (err) {
-    console.error(`Error while getting programming languages`, err.message);
-    next(err);
-  }
+async function get(req, res) {
+    let response = await fetch(
+      "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=28a501d82528fc0b2ef18b3429d4f916&text=starwars&format=json&nojsoncallback=1",
+      {}
+    );
+
+    let data = await response.json()
+    
+    res.json(data);
 }
 
 async function create(req, res, next) {

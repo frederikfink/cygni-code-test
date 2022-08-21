@@ -1,12 +1,22 @@
 import fetch from 'node-fetch';
 
-export default function (url, options, timeout = 7000) {
-    return Promise.race([
-        fetch(url, options),
-        new Promise((_, reject) =>
-            setTimeout(() => reject(
-                new Error('test!'))
-            )
-        )
-    ]);
-}
+export const fetchWithTimeout = (url, options) => new Promise((resolve, reject) => {
+  const timeout = setTimeout(() => reject('timeout'), 1000);
+
+  return fetch(url)
+    .then(response => {
+      clearTimeout(timeout);
+
+      if (response.status === 200) {
+        return resolve(response);
+      }
+
+      return reject(response);
+    }, rejectReason => {
+      clearTimeout(timeout);
+
+      return reject(rejectReason);
+    });
+});
+
+export default fetchWithTimeout;
