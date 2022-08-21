@@ -1,2 +1,4 @@
 /backend/node_modules/*
 /backend/src/configs/*
+/frontend/node_modules/*
+/.vscode

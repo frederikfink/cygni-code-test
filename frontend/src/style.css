@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import '../node_modules/modern-normalize/modern-normalize.css';
+
+:root {
+    --primary: #D8315B;
+    --secondary: #FFFAFF;
+    --muted: #B6B1B6;
+    --bg: #1E1B18;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: #dbdbdb;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 { color: var(--primary); letter-spacing: -.1rem; font-weith: 800; }
+h2 {}
+h3 {}
+h4 {color: var(--secondary); letter-spacing: -.1rem; font-weight: 400; margin: 0; font-size: 1.4rem; }
+h5 {}
+h6 {color: var(--muted); font-family: 'Courier New', monospace;}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.post {
+    width: 200px;
+}
+
+.post-image {
+    border: 1px solid pink;
+    border-radius: 6px;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: 80% 100%;
+}
+
+.post-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+// breakpoints
+@media only screen and (max-width: 640px) { }
+@media only screen and (max-width: 768px) { }
+@media only screen and (max-width: 1024px) { }
+@media only screen and (max-width: 1280px) { }
+@media only screen and (max-width: 1536px) { }
+
+// utility
+m-0 {
+    margin: 0;
+}
+
+mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+my-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
