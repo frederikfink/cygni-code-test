@@ -14,24 +14,24 @@ const init = async () => {
   let spinner = document.getElementById('spinner');
   let feed = document.getElementById('feed');
   
-  spinner.hidden = false;
+  updateLoadingState(true);
   
   let photos = await searchFlickr({ keyword: keyword, page: page });
   feed.innerHTML += await photos.join('');
 
-  spinner.hidden = true;
+  updateLoadingState(false);
   
   // eventlistener scroll bottom
   window.onscroll = async function () {
     
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight && !isLoading) {
-      spinner.hidden = false; isLoading = true;
+      updateLoadingState(true);
       
       page += 1;
       let photos = await searchFlickr({ keyword: keyword, page: page });
       feed.innerHTML += await photos.join('');
       
-      isLoading = false; spinner.hidden = true;
+      updateLoadingState(false);
     }
 
   }
@@ -52,18 +52,31 @@ const init = async () => {
 }
 
 const handleSearchBtnClick = async () => {
-  spinner.hidden = false; isLoading = true;
+  if(!isLoading){
+    updateLoadingState(true);
+    
+    // update global states
+    keyword = document.getElementById('nav-search-field').value;
+    page = 1;
+    
+    // fetch photos
+    let photos = await searchFlickr({keyword: keyword, page: page});
+    feed.innerHTML = await photos.join();
+    
+    // update dom
+    document.getElementById('keyword').innerHTML = `:${keyword}`;
 
-  keyword = document.getElementById('nav-search-field').value;
-  page = 1;
-
-  let photos = await searchFlickr({keyword: keyword, page: page});
-  feed.innerHTML = await photos.join();
-
-  document.getElementById('keyword').innerHTML = `:${keyword}`;
-  isLoading = false; spinner.hidden = true;
+    // update loading state
+    updateLoadingState(false);
+  }
 }
 
 const handlePostClick = (e) => {
   console.log(e);
+}
+
+const updateLoadingState = (isLoading) => {
+  isLoading = isLoading;
+  if(isLoading) spinner.hidden = false;
+  else          spinner.hidden = true;
 }
