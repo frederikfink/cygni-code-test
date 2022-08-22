@@ -4,6 +4,7 @@
     --primary: #E88B00;
     --secondary: #EFF1F3;
     --muted: #A7A7A7;
+    --muted-dark: #454545;
     --bg: #16181A;
     --black: #000000;
 }
@@ -25,7 +26,7 @@ h1 {
 
 .container {
     max-width: 1500px;
-    margin: 0 auto;
+    margin: 0 auto 10rem 0;
 }
 
 .nav {
@@ -34,25 +35,37 @@ h1 {
     align-items: center;
 }
 
-.nav__title {
-    margin-right: auto;
-}
-
 button {
     all: unset;
     cursor: pointer;
+}
+
+input {
+    all: unset;
 }
 
 button:focus {
     outline: orange 5px auto;
 }
 
+.nav__search {
+    align-items: center;
+    display:flex;
+}
+
 .nav__search_btn {
+    border: 1px solid var(--muted-dark);
+    border-radius: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    color: var(--secondary);
+    font-size: 0.8rem;
     display: flex;
+    align-items: center;
     background-color:transparent;
 }
 
 .nav__search_btn_icon {
+    margin-left: 0.5rem;
     height: 1.2rem;
     width: 1.2rem;
     color: var(--secondary);
@@ -64,6 +77,17 @@ button:focus {
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
     display: block;
+}
+
+.nav__search_field {
+    margin-right: 1rem;
+    padding: 0.2rem 0.6rem;
+    max-width: 200px;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    background: transparent;
+    border-bottom: 1px solid var(--muted-dark);
+    color: var(--muted);
 }
 
 .feed {
@@ -78,8 +102,12 @@ button:focus {
     width: 100%;
     max-width: 350px;
     color: var(--muted);
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+}
+
+.post__btn {
+    width: inherit;
 }
 
 .post__img {
@@ -123,11 +151,21 @@ button:focus {
 }
 
 // breakpoints
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 639px) {
+
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 640px) {
     .nav__search_label{
         display: none;
+    }
+
+    .nav {
+        flex-direction: column;
+    }
+    .nav__search {
+        margin: 1rem 0;
+        width: 100%;
+        justify-content: space-between;
     }
 }
 @media only screen and (max-width: 1024px) { }
@@ -136,10 +174,6 @@ button:focus {
 @media only screen and (max-width: 1536px) { }
 
 // utility
-
-.text-uppercase {
-    text-transform: uppercase;
-}
 
 .m-0 {
     margin: 0;
@@ -155,3 +189,29 @@ button:focus {
     margin-bottom: 0;
 }
 
+.mr-auto {
+    margin-right: auto;
+}
+
+.flex {
+    display:flex;
+}
+
+.color-secondary {
+    color: var(--secondary);
+}
+
+.spinner {
+    border: 3px solid var(--muted-dark); 
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin-right: 0.6rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}

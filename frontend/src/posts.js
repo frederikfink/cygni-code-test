@@ -1,6 +1,4 @@
 export const searchFlickr = async ({ keyword, page }) => {
-    console.log(page);
-    console.log(keyword);
     const res = await fetch(`http://localhost:3000/test/?keyword=${keyword}&page=${page}`, {
         headers: { 'Content-Type': 'application/json' }
     });
@@ -16,10 +14,11 @@ export const searchFlickr = async ({ keyword, page }) => {
 
 const post = ({ farm, server, id, secret, title }) => {
     const image_url = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
-
     return (
         `<div class="post">
-            <img class="post__img" src="${image_url}" />
+            <button class="post__btn">
+                <img class="post__img" src="${image_url}" />
+            </button>
             <div class="post__details">
             <p class="post__title">${title}</p>
             <p class="post__owner">
