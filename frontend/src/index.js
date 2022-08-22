@@ -4,9 +4,9 @@ import './style.css';
 function component() {
   const element = document.createElement('h1');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-  test();
+  // test();
 
   return element;
 }
