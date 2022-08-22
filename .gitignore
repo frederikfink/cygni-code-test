@@ -2,3 +2,4 @@
 /backend/src/configs/*
 /frontend/node_modules/*
 /.vscode
+/frontend/dist/main.js
