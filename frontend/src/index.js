@@ -6,15 +6,17 @@ window.onload = ev => {
 }
 
 const init = async () => {
-  let photos = await searchFlickr("cars");
+  let page = 1;
+
+  let photos = await searchFlickr({keyword: "porsche", page: page});
   let feed = document.getElementById('feed');
   feed.innerHTML += await photos.join('');
  
   window.onscroll = async function () {
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
-      let photos = await searchFlickr("cars");
+      page += 1;
+      let photos = await searchFlickr({keyword: "porsche", page: page});
       feed.innerHTML += await photos.join('');
     }
   }
-  
 }

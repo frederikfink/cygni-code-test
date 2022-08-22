@@ -1,6 +1,7 @@
-export const searchFlickr = async ({ keyword = "cars" }) => {
-
-    const res = await fetch("http://localhost:3000/test", {
+export const searchFlickr = async ({ keyword, page }) => {
+    console.log(page);
+    console.log(keyword);
+    const res = await fetch(`http://localhost:3000/test/?keyword=${keyword}&page=${page}`, {
         headers: { 'Content-Type': 'application/json' }
     });
 
