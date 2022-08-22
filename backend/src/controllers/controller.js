@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 async function get(req, res) {
     let response = await fetch(
-      "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=28a501d82528fc0b2ef18b3429d4f916&text=starwars&format=json&nojsoncallback=1",
+      "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=28a501d82528fc0b2ef18b3429d4f916&text=cars&format=json&nojsoncallback=1",
       {}
     );
 
