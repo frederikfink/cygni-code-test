@@ -4,15 +4,8 @@ const router = express.Router();
 
 /* GET programming languages. */
 router.get('/', get);
-  
-// /* POST programming language */
-// router.post('/', controller.create);
 
-// /* PUT programming language */
-// router.put('/:id', controller.update);
-
-// /* DELETE programming language */
-// router.delete('/:id', controller.remove);
+router.get('/:id', get);
 
 export default router;
 

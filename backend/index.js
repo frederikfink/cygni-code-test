@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     res.json({ 'message': 'ok' });
 })
 
-app.use('/test', router);
+app.use('/posts', router);
 
 
 
