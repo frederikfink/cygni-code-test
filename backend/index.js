@@ -1,5 +1,6 @@
 import express from 'express';
-import router from './src/routes/router.js';
+import searchRouter from './src/routes/search.router.js';
+import postsRouter from './src/routes/posts.router.js';
 
 const port = 3000;
 const app = express();
@@ -8,10 +9,8 @@ app.get('/', (req, res) => {
     res.json({ 'message': 'ok' });
 })
 
-app.use('/posts', router);
-
-
-
+app.use('/api/posts', postsRouter);
+app.use('/api/search', searchRouter);
 
 app.listen(port, '0.0.0.0', () => {
     console.log(`Example app listening at http://localhost:${port}`)

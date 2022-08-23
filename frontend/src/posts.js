@@ -1,15 +1,29 @@
 export const searchFlickr = async ({ keyword, page }) => {
-    const res = await fetch(`http://localhost:3000/test/?keyword=${keyword}&page=${page}`, {
-        headers: { 'Content-Type': 'application/json' }
-    });
 
-    const data = await res.json();
+    if (keyword === "") {
+        console.log("Cannot search for nothing");
+        return false;
+    }
 
-    const photosData = data.photos.photo;
+    try {
+        const res = await fetch(`http://localhost:3000/api/search?keyword=${keyword}&page=${page}`, {
+            headers: { 'Content-Type': 'application/json' }
+        });
+        try {
 
-    const photos = photosData.map(photo => post({...photo}));
+            const data = await res.json();
+            const photosData = data.photos.photo;
+            const photos = photosData.map(photo => post({ ...photo }));
+            return photos;
 
-    return photos;
+        } catch (error) {
+            console.log("Please try again later.");
+            return false;
+        }
+    } catch (error) {
+        console.log("Could not find API");
+    }
+
 }
 
 const post = ({ farm, server, id, secret, title }) => {
@@ -17,7 +31,7 @@ const post = ({ farm, server, id, secret, title }) => {
     return (
         `<div class="post">
             <button class="post__btn">
-                <img class="post__img" src="${image_url}" />
+                <img class="post__img" id=${id} src="${image_url}" />
             </button>
             <div class="post__details">
             <p class="post__title">${title}</p>

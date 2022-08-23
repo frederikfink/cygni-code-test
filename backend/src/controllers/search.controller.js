@@ -3,8 +3,6 @@ import fetch from 'node-fetch';
 
 async function get(req, res) {
 
-  console.log(req.params);
-
   let keyword = req.query.keyword;
   let page = req.query.page;
   
