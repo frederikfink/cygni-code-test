@@ -12,7 +12,6 @@ async function get(req, res) {
 
   let data = await response.json()
 
-  res.header('Access-Control-Allow-Origin', '*');
   res.json(data);
 }
 

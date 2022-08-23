@@ -15,35 +15,15 @@ const init = async () => {
 
   let feed = document.getElementById('feed');
 
-  updateLoadingState(true);
-
-  let photos = await searchFlickr({ keyword: keyword, page: page });
-
-  if(photos)
-  {
-    feed.insertAdjacentHTML('beforeend', await photos.join(''));
-  }
-
-  updateLoadingState(false);
-
-  // eventlistener scroll bottom
-  window.onscroll = async function () {
-
+  // init images 
+  handleSearch();
+  
+  // eventlistner scroll
+  window.addEventListener('scroll', () => {
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight && !isLoading) {
-      updateLoadingState(true);
-
-      page += 1;
-      let photos = await searchFlickr({ keyword: keyword, page: page });
-      if(photos)
-      {
-        feed.insertAdjacentHTML('beforeend', await photos.join(''));
-      } else {
-        page -= 1;
-      }
-      updateLoadingState(false);
+      handleScrollBottom();
     }
-
-  }
+  });
 
   // eventlistener searchbar btn
   document.getElementById('nav-search-btn').addEventListener('click', handleSearch);
@@ -63,6 +43,18 @@ const init = async () => {
     if(e.key == "Escape") handleModalClose();
   });
 
+}
+
+const handleScrollBottom = async () => {
+  page += 1;
+  let photos = await searchFlickr({ keyword: keyword, page: page });
+  if(photos)
+  {
+    feed.insertAdjacentHTML('beforeend', await photos.join(''));
+  } else {
+    page -= 1;
+  }
+  updateLoadingState(false);
 }
 
 const handleSearch = async () => {
