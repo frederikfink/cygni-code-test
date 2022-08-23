@@ -13,5 +13,5 @@ app.use('/api/posts', postsRouter);
 app.use('/api/search', searchRouter);
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`App listening at http://localhost:${port}`)
 });
