@@ -17,7 +17,7 @@ const init = async () => {
 
   // init images 
   handleSearch();
-  
+
   // eventlistner scroll
   window.addEventListener('scroll', () => {
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight && !isLoading) {
@@ -46,6 +46,7 @@ const init = async () => {
 }
 
 const handleScrollBottom = async () => {
+  updateLoadingState(true);
   page += 1;
   let photos = await searchFlickr({ keyword: keyword, page: page });
   if(photos)
