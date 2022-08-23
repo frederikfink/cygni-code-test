@@ -11,7 +11,6 @@ window.onload = ev => {
 
 const init = async () => {
 
-  let spinner = document.getElementById('spinner');
   let feed = document.getElementById('feed');
   
   updateLoadingState(true);
@@ -37,11 +36,11 @@ const init = async () => {
   }
 
   // eventlistener searchbar btn
-  document.getElementById('nav-search-btn').addEventListener('click', handleSearchBtnClick);
+  document.getElementById('nav-search-btn').addEventListener('click', handleSearch);
 
   // eventlistener searchbar enter
   document.getElementById('nav-search-field').addEventListener('keypress', function (e) {
-    if (e.key == "Enter") handleSearchBtnClick();
+    if (e.key == "Enter") handleSearch();
   });
 
   // eventlistener post click
@@ -51,7 +50,7 @@ const init = async () => {
   });
 }
 
-const handleSearchBtnClick = async () => {
+const handleSearch = async () => {
   if(!isLoading){
     updateLoadingState(true);
     
@@ -60,7 +59,7 @@ const handleSearchBtnClick = async () => {
     page = 1;
     
     // fetch photos
-    let photos = await searchFlickr({keyword: keyword, page: page});
+    let photos = await searchFlickr({ keyword: keyword, page: page });
     feed.innerHTML = await photos.join();
     
     // update dom
@@ -76,6 +75,7 @@ const handlePostClick = (e) => {
 }
 
 const updateLoadingState = (isLoading) => {
+  let spinner = document.getElementById('spinner');
   isLoading = isLoading;
   if(isLoading) spinner.hidden = false;
   else          spinner.hidden = true;

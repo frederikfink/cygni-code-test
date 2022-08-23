@@ -26,12 +26,21 @@ h1 {
 
 .container {
     max-width: 1500px;
-    margin: 0 auto 10rem 0;
+    margin: 0 auto 10rem auto;
+}
+
+.nav__wrapper {
+    position:fixed;
+    width: 100%;
+    background-color: rgba(22, 24, 26, 0.9);
+    max-width: 1500px;
+    backdrop-filter: blur(24px);
+    padding: 20px 0;
 }
 
 .nav {
+    margin: 0 20px;
     display: flex;
-    padding: 20px 20px 0 20px;
     align-items: center;
 }
 
@@ -92,7 +101,7 @@ button:focus {
 
 .feed {
     justify-content: center;
-    padding: 20px;
+    padding: 100px 20px 20px;
     display:flex;
     gap: 20px;
     flex-wrap: wrap;
