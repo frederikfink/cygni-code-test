@@ -3,5 +3,5 @@
 /frontend/node_modules/*
 /.vscode
 /frontend/dist/main.js
-/frontend/dist/
+/frontend/dist
 /backend/.env
