@@ -30,3 +30,4 @@ npm install
 npm run build
 ```
 
+tested with node -v 16
