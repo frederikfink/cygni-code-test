@@ -5,8 +5,10 @@ export const searchFlickr = async ({ keyword, page }) => {
         return false;
     }
 
+    const path = "http://localhost:3000/api";
+
     try {
-        const res = await fetch(`http://localhost:3000/api/search?keyword=${keyword}&page=${page}`, {
+        const res = await fetch(`${path}/search?keyword=${keyword}&page=${page}`, {
             headers: { 'Content-Type': 'application/json' }
         });
         try {

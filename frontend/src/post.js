@@ -1,6 +1,14 @@
 export const getOriginalSize = async ({ id }) => {
 
-    const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+    if (id === "") {
+        console.log("Could not find post");
+        return false;
+    }
+
+
+    const path = "http://localhost:3000/api";
+
+    const res = await fetch(`${path}/posts/${id}`, {
         headers: { 'Content-Type': 'application/json' }
     });
 
