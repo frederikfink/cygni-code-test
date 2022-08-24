@@ -1,9 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import searchRouter from './src/routes/search.router.js';
 import postsRouter from './src/routes/posts.router.js';
 
-const port = 3000;
+dotenv.config({ path: './.env' });
+
+const port = process.env.PORT;
 const app = express();
 
 app.use(cors());

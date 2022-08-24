@@ -1,19 +1,23 @@
 // import fetch from '../utils/fetchWithTimeout.js'
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
 async function get(req, res) {
 
-  const id = req.params.id;
+    dotenv.config({ path: './.env' });
+    const api_key = process.env.API_KEY;
 
-  let response = await fetch(
-    `https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=28a501d82528fc0b2ef18b3429d4f916&photo_id=${id}&format=json&nojsoncallback=1`
-  );
+    const id = req.params.id;
 
-  let data = await response.json()
+    let response = await fetch(
+        `https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${api_key}&photo_id=${id}&format=json&nojsoncallback=1`
+    );
 
-  let original_photo = data.sizes.size.filter(elem => elem.label == 'Original')[0];
+    let data = await response.json()
 
-  res.json(original_photo);
+    let original_photo = data.sizes.size.filter(elem => elem.label == 'Original')[0];
+
+    res.json(original_photo);
 
 }
 

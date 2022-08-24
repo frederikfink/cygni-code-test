@@ -4,3 +4,4 @@
 /.vscode
 /frontend/dist/main.js
 /frontend/dist/
+/backend/.env
