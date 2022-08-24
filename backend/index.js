@@ -1,9 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import searchRouter from './src/routes/search.router.js';
 import postsRouter from './src/routes/posts.router.js';
 
 const port = 3000;
 const app = express();
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.json({ 'message': 'ok' });
