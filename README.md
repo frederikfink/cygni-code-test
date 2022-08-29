@@ -20,6 +20,8 @@ to start the backend:
 cd ~/backend
 npm install
 npm run start
+
+*remember to create a ~/backend/.env file following the ~/backend/.template.env template*
 ```
 
 ```
