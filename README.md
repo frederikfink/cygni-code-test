@@ -26,7 +26,7 @@ cd ~/frontend
 npm install
 npm run build
 
-// If you have modified the default port, 
+// If you have modified the default port at ~/backend/.env,
 // please update ~/src/post.js & ~/src/posts.js to the same specified port
 ```
 
