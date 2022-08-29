@@ -2,6 +2,6 @@
 /backend/src/configs/*
 /frontend/node_modules/*
 /.vscode
-/frontend/dist/main.js
-/frontend/dist
+# /frontend/dist/main.js
+# /frontend/dist
 /backend/.env
